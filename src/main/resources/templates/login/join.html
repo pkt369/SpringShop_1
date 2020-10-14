@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="login/join.css" rel="stylesheet" />
+</head>
+<body class="align">
+
+
+<div class="site__container">
+
+    <div class="grid__container">
+
+        <form action="/join/new" method="post" class="form form--login">
+
+            <div class="form__field">
+                <label class="fontawesome-user" for="name"><span class="hidden">name</span></label>
+                <input id="name" name="name" type="text" class="form__input" placeholder="이름을 입력하세요" required>
+            </div>
+
+            <div class="form__field">
+                <label class="fontawesome-user" for="id"><span class="hidden">id</span></label>
+                <input id="id" name="id" type="text" class="form__input" placeholder="아이디를 입력하세요" required>
+            </div>
+
+            <div class="form__field">
+                <label class="fontawesome-lock" for="pw"><span class="hidden">Password</span></label>
+                <input id="pw" name="pw" type="password" class="form__input" placeholder="비번을 입력하세요" required>
+            </div>
+
+
+
+            <div class="form__field">
+                <input type="submit" value="회원가입">
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+</div>
+
+<script src="login/login.js"></script>
+
+
+</body>
+</html>
