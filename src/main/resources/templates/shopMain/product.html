@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>쇼핑몰</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/shop-homepage.css}" rel="stylesheet">
+    <link th:href="@{/css/product.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/user">스프링개인프로젝트</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/user">홈
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="bu_logout" href="logout">로그아웃</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="bu_basket" href="#">장바구니</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <h1 class="product_sort" th:text="${index_0.sort}">product</h1> <!--종류-->
+    <img th:src="${index_0.url}" class="front_image"> <!--이미지-->
+
+    <div class="product_option">
+        <form action="/user/product/basket" method="get"> <!--둘다 베스킷 가는건 맞지만 페이지를 이동하느냐 마는냐-->
+            <input type="hidden" name="product_name" th:value="${index_0.name}">
+            <h2 th:text="${index_0.name}"></h2> <!--상품이름-->
+            <h4 th:text="${index_0.price}" style="float: right; font-weight: 900; " ></h4> <!--상품 가격-->
+
+            <br>
+            <br>
+            <br>
+            <br> <!--네줄 띄우기-->
+
+            <h4>옵션</h4>
+            <select name="option" th:size="1" class="select_product"> <!--옵션 리스트-->
+                <option value="" selected>선택</option>
+                <div th:each="product : ${list}">
+                    <option th:value="${product.option}" th:text="${product.option}"></option>
+                </div>
+            </select>
+
+            <br>
+            <br>
+            <br>
+            <br> <!--네줄 띄우기-->
+
+            <h4>쿠폰</h4>
+            <select name="coupon" size="1" class="select_product">
+                <option value="" selected>선택</option>
+                <option value="2000">2000원 할인</option>
+            </select>
+            <script>
+                var select_value = function(select_obj){
+                     var selected_index = select_obj.selectedIndex;
+                      var selected_value = select_obj.options[selected_index].value;
+                }
+            </script>
+
+
+            <input type="image" class="basket_letter" onclick="alert('성공적으로 들어갔습니다')"
+                   src="/product/front/basket_letter.png" width="100%"  height="100%"></input>
+
+            <input type="image" class="buy_letter" onclick=""
+                   src="/product/front/buy_letter.png" width="100%"  height="100%"></input>
+        </form>
+    </div>
+
+    <!--상세 페이지 영역-->
+    <div class="detail_page">
+        <img th:src="${index_0.detailUrl}" width="1070px" height="auto">
+    </div>
+
+
+</div>
+
+</body>
+</html>

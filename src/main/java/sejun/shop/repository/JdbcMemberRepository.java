@@ -52,6 +52,7 @@ public class JdbcMemberRepository implements MemberRepository{
         return (rs, rowNum) -> {
             Member member = new Member();
             member.setId(rs.getString("id"));
+            member.setPw(rs.getString("pw"));
             member.setName(rs.getString("name"));
             return member;
         };
