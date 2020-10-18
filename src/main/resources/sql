@@ -1,0 +1,11 @@
+create table buyList(
+productName varchar2(100),
+price varchar2(20),
+option varchar2(100),
+username varchar2(50),
+address varchar2(200),
+phone varchar2(50),
+need varchar2(200),
+pay varchar2(30)
+);
+

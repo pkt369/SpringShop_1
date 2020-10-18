@@ -1,0 +1,25 @@
+
+.buyer_info{
+/*    border: 1px solid black;*/
+    width: 1070px;
+    height: 800px;
+    margin-top: 50px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.textSpace{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.pick_pay{
+    margin-top: 30px;
+}
+
+.buy_bu{
+    float: right;
+    margin-top: 150px;
+    width: 150px;
+    height: 60px;
+}

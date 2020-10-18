@@ -43,18 +43,5 @@ public class LoginController {
         return "redirect:/login";
     }
 
-//    @PostMapping("/login/check")
-//    public String postLogin(LoginForm form, Model model){
-//        Optional<Member> user = memberService.login(form.getId(), form.getPw());
-//        System.out.println(form.getId());
-//
-//        //존재하지 않는다면
-//        if(!user.isPresent()){
-//            return "redirect:/login";
-//        }
-//        //존재한다면
-//        model.addAttribute("name", user.get().getName()); //이름
-//        model.addAttribute("loginCheck",true); //로그인 성공
-//        return "redirect:/";
-//    }
+
 }
