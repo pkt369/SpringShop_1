@@ -34,6 +34,11 @@ public class JdbcProductRepository implements ProductRepository{
         return result.stream().findAny();
     }
 
+    @Override
+    public List<Product> findAll() {
+        return jdbcTemplate.query("select * from product", productRowMapper());
+    }
+
 
     private RowMapper<Product> productRowMapper(){
         return (rs, rowNum) -> {

@@ -27,4 +27,6 @@ public class ProductService {
     public Product optionBringProduct(String name, String option){
         return productRepository.findByOptionName(name, option).get();
     }
+
+    public List<Product> bringProductAll() { return productRepository.findAll(); }
 }

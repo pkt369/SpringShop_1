@@ -15,7 +15,8 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/shop-homepage.css}" rel="stylesheet">
-    <link th:href="@{/css/product.css}" rel="stylesheet">
+    <link th:href="@{/css/basket.css}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
 
@@ -53,25 +54,21 @@
     </div>
 </nav>
 
-<!-- Page Content -->
 <div class="container">
-    <h1 style="text-align: center;
-    line-height: 300px;
-    padding: 10px;">구매 성공하셨습니다</h1>
+    <h2 id="basket_letter">구매 목록</h2>
 
-    <button onclick="location.href='/user'" id="button">확인</button>
 
+    <div class="BasketInOne"th:each="list : ${list}">
+        <img th:src="@{${list.url}}" class="product_front">
+
+        <span class="letter">상품명 : <span th:text="${list.productName}" class="letter2"></span></span>
+        <br>
+        <br>
+        <span class="letter">옵션 : <span th:text="${list.option}" class="letter2"></span></span>
+        <br>
+        <br>
+        <span class="letter">가격 : <span th:text="${list.price}" class="letter2"></span></span>
+    </div>
 </div>
-
-<style>
-    #button{
-        position: absolute;
-        width: 150px;
-        height: 70px;
-        left: 50%;
-        margin-left: -75px;
-        margin-top: 30px;
-    }
-</style>
 </body>
 </html>

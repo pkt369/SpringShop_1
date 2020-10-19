@@ -10,7 +10,7 @@
  }
 
  .product_option{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     float:left;
     margin-left: 20px;
     width: 400px;
@@ -45,5 +45,5 @@
     margin-top: 100px;
     width: 1070px;
     height: auto;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
   }

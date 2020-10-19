@@ -24,5 +24,7 @@ public class BuyService {
         return buyListRepository.bringList();
     }
 
+    public List<BuyList> listWithName(String name) { return buyListRepository.findByName(name); }
+
 
 }

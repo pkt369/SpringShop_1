@@ -15,6 +15,7 @@ import sejun.shop.service.BuyService;
 import sejun.shop.service.ProductService;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -109,7 +110,6 @@ public class ShopMainController {
             @RequestParam("option") String option,
             @RequestParam("coupon") String coupon){
 
-        System.out.println(name + option + coupon);
 
 
         Product product = productService.optionBringProduct(name, option);
@@ -194,7 +194,6 @@ public class ShopMainController {
                                 @RequestParam("pay") String pay){
         List<Product> products = basketService.bringBasket();
         for(int i = 0; i < products.size(); i++){
-            System.out.println(products.get(i).getName());
             Product product = products.get(i);
             BuyList buyList = new BuyList();
             buyList.setProductName(product.getName()); //이름
@@ -210,6 +209,28 @@ public class ShopMainController {
         }
 
         return "redirect:/user/buy/success";
+    }
+
+    @GetMapping("/user/buyList")
+    public String getBuyList(Model model, Principal principal){
+        List<BuyList> buyList = buyService.listWithName(principal.getName());
+
+        List<Product> products = productService.bringProductAll();
+
+
+        for(int i = 0; i < buyList.size(); i++){
+            for(int j = 0; j < products.size(); j++){
+                if(buyList.get(i).getProductName().equals(products.get(j).getName())){
+                    buyList.get(i).setUrl(products.get(j).getUrl());
+                    break; //같은 이름 있는 옵션을 피하기위한 브레이크
+                }
+            }
+        }
+
+        model.addAttribute("list", buyList);
+
+
+        return "/shopMain/buyList";
 
     }
 

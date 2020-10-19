@@ -29,6 +29,11 @@ public class JdbcBuyListRepository implements BuyListRepository{
        return jdbcTemplate.query("select * from buyList", listRowMapper());
     }
 
+    @Override
+    public List<BuyList> findByName(String name) {
+        return jdbcTemplate.query("select * from buyList where username=?", listRowMapper(), name);
+    }
+
 
     private RowMapper<BuyList> listRowMapper(){
         return (rs, rowNum) -> {
